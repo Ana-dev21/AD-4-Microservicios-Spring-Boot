@@ -16,7 +16,15 @@ jobs:
       run:
         working-directory: AD_4_MicroserviciosRest
     steps:
-      - uses: actions/checkout@v2
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - run: |
+          az webapp list --query "[?state=='Running']"
+          
+      - name: Checkout to source code
+        uses: actions/checkout@v2
 
       - name: Set up Java version
         uses: actions/setup-java@v1
