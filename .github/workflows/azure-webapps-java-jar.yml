@@ -16,7 +16,8 @@ jobs:
       run:
         working-directory: AD_4_MicroserviciosRest
     steps:
-
+      - uses: actions/checkout@v2
+      
       - name: Set up Java version
         uses: actions/setup-java@v1
         with:
